@@ -1,10 +1,8 @@
 var express = require('express');
-
-
 var nunjucks = require('nunjucks');
 var app = express();
+var tweetBank = require('./tweetBank.js');
 
-// in some file that is in the root directory of our application... how about app.js?
 var locals = {
     title: 'An Example',
     people: [
@@ -13,17 +11,15 @@ var locals = {
         { name: 'Hermione'}
     ]
 };
+
 nunjucks.configure('views', {noCache: true});
 
 // nunjucks.render('index.html', locals, function (err, output) {
 //     console.log(output);
 // });
 
-
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
-
-
 
 app.use(function(req, res, next) {
     // log method and path props on req obj
@@ -33,7 +29,6 @@ app.use(function(req, res, next) {
 	// });
 	res.render( 'index', locals);
     console.log(req.method, req.path, res.statusCode);
-    
     // next();
 });
 
@@ -49,7 +44,6 @@ app.use(function(req, res, next) {
 // app.get('/news', function(req, res, next) {
 //     res.send('welcome to news')
 // })
-
 
 app.listen(3000, function() {
     console.log('server listening')
