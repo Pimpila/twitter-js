@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  
+
   <div class="page-header">
     <h1>Welcome to Twitter.js!</h1>
   </div>
@@ -12,13 +12,14 @@
       100 followers
     </div>
     <div class="col-md-9">
-    
+
       <!-- display tweets here -->
-      {% for tweet in tweets %}
-        <li>{{tweet.content}}</li>
+      {% for tweet in tweets %}  <!-- for every key in tweets obj-->
+      <li><a href='/users/{{tweet.name}}'>{{tweet.name}}</a><br/>{{tweet.content}}</li>
+        <!--<li><b>{{tweet.name}}</b><br/>{{tweet.content}}</li>-->
       {% endfor %}
-      
+
     </div>
   </div>
-    
+
 {% endblock %}

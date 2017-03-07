@@ -23,9 +23,7 @@ app.engine('html', nunjucks.render); // when giving html files to res.render, te
 app.use('/', routes);
 
 // app.use(function(req, res, next) {
-    
 // 	res.render( 'index', locals);
-    
 // });
 
 
