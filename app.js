@@ -14,16 +14,14 @@ var locals = {
     ]
 };
 nunjucks.configure('views', {noCache: true});
-nunjucks.render('index.html', locals, function (err, output) {
-    console.log(output);
-});
+
+// nunjucks.render('index.html', locals, function (err, output) {
+//     console.log(output);
+// });
 
 
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
-
-
-const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
 
 
 
@@ -33,8 +31,9 @@ app.use(function(req, res, next) {
  //    res.render('index', locals, function(err, html) {
  //  		res.send(html);
 	// });
-	res.render( 'index', {title: 'Hall of Fame', people: people} );
+	res.render( 'index', locals);
     console.log(req.method, req.path, res.statusCode);
+    
     // next();
 });
 
