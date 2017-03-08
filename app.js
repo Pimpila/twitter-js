@@ -2,18 +2,20 @@ var express = require('express');
 var nunjucks = require('nunjucks');
 var app = express();
 var tweetBank = require('./tweetBank.js');
-const routes = require('./routes');
+var routes = require('./routes');
+var bodyParser = require('body-parser')
+
 app.use('/', routes);
 app.use(express.static('public'));
 
-var locals = {
-    title: 'An Example',
-    people: [
-        { name: 'Gandalf'},
-        { name: 'Frodo' },
-        { name: 'Hermione'}
-    ]
-};
+// var locals = {
+//     title: 'An Example',
+//     people: [
+//         { name: 'Gandalf'},
+//         { name: 'Frodo' },
+//         { name: 'Hermione'}
+//     ]
+// };
 
 nunjucks.configure('views', {noCache: true});
 

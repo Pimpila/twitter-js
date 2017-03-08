@@ -15,12 +15,23 @@
 
       <!-- display tweets here -->
       {% for tweet in tweets %}  <!-- for every key in tweets obj-->
-      <li><a href='/users/{{tweet.name}}'>{{tweet.name}}</a><br/><a href='/users/{{tweet.content}}'>{{tweet.content}}</a></li>
-      <!--<li><a href='/users/{{tweet.name}}'>{{tweet.name}}</a><br/>{{tweet.content}}</li>-->
-        <!--<li><b>{{tweet.name}}</b><br/>{{tweet.content}}</li>-->
+      <!--<li><a href='/users/{{tweet.name}}'>{{tweet.name}}</a><br/><a href='/users/{{tweet.content}}'>{{tweet.content}}</a></li>-->
+      <li><a href='/users/{{tweet.name}}'>{{tweet.name}}</a><br/>{{tweet.content}}</li>
       {% endfor %}
-
     </div>
+    {% if showForm %}
+    <div class="submitTweet">
+      <form action="/tweets" method="POST">
+        <label for="name_field">Name:</label>
+        <input name="name" type="text" id="name_field" />
+
+        <label for="text_field">Text:</label>
+        <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    {% endif %}
   </div>
 
 {% endblock %}
