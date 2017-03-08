@@ -1,12 +1,11 @@
 const _ = require('lodash');
 
-//{name: Name, content: tweets}, {name: Name, content: tweets}];
-// var data = [ {name: 'Geoff', content: 'tweet one!'}, {name: 'Geoff', content: 'tweet two!'}];
-
-var data = [];
+var data = []; // e.g. [{name: userName, content: tweet, id: userId}, {name: userName, content: tweet, id: userId}]
+var id = 0;
 
 function add (name, content) {
-  data.push({ name: name, content: content });
+  data.push({ name: name, content: content, id: id });
+  id++;
   console.log(data)
 }
 
@@ -14,7 +13,7 @@ function list () {
   return _.cloneDeep(data);
 }
 
-function find (properties) { // properties: function(elem) {return elem.name === name}
+function find (properties) { // e.g. properties: {name: userName}
   return _.cloneDeep(_.filter(data, properties));
 }
 
