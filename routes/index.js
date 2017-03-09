@@ -11,7 +11,7 @@ router.get('/users/:name', function (req, res) {
   var userName = req.params.name;
   var tweetsWithUserName = tweetBank.find({name: userName}); // returns a filter obj
   console.log(tweetsWithUserName)
-  // ?? tweetsWithUserName is an array of objs that gets looped over in nunjuck template ({% for tweet in tweets %})
+  // the nunjucks template references this obj that's passed to res.render to find the data it needs.
   res.render( 'index', { tweets: tweetsWithUserName, showForm: true} );
 });
 
@@ -30,7 +30,6 @@ router.get('/', function (req, res, next) {
 
 // to add a tweet:
 router.post('/tweets', function (req, res){
-  // ?? name logging undefined
   var name = req.body.name; // corresponds to <input name="name"...> in form
   var text = req.body.text; // corresponds to <input name="text"...> in form
   console.log('name', name, 'text', text);
